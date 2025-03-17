@@ -1,0 +1,24 @@
+import java.util.*;
+import java.util.stream.*;
+class PlusOne{
+    public int[] plusOne(int[] digits) {
+        List<Integer> l1= Arrays.stream(digits).boxed().collect(Collectors.toList());
+         
+        int n = digits.length;
+        l1.set(n-1, l1.get(n-1) + 1);
+        for (int i = n-1; i >= 0; i--) {
+            if (l1.get(i) == 10) {
+                l1.set(i, 0);
+                if (i-1 >= 0) {
+                    l1.set(i-1, l1.get(i-1) + 1);
+                } else {
+                    l1.add(0);
+                    l1.set(i, l1.get(i) + 1);
+                }
+            }
+        }
+
+        return l1.stream().mapToInt(Integer::intValue).toArray();
+        
+    }
+}

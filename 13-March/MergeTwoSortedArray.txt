@@ -1,0 +1,30 @@
+class MergeTwoSortedArray {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int[] result = new int[m+n];
+        int left=0;
+        int right=0;
+        int index=0;
+        while(left<m && right<n){
+            if(nums1[left]<=nums2[right]){
+                result[index]=nums1[left];
+                left++;
+                index++;
+            }else{
+                result[index] = nums2[right];
+                right++;
+                index++;
+            }
+        }
+
+        while(left<m){
+            result[index++] = nums1[left++];
+        }
+
+        while(right<n){
+             result[index++] = nums2[right++];
+        }
+        for(int i=0; i<nums1.length;i++){
+            nums1[i]= result[i];
+        }
+    }
+}
