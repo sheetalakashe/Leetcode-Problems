@@ -1,0 +1,20 @@
+import java.util.*;
+class IntersectionOfTwoArray {
+    public int[] intersect(int[] nums1, int[] nums2) {
+       Map<Integer, Integer> map = new HashMap<>();
+       for(int n1 : nums1){
+        map.put(n1, map.getOrDefault(n1, 0)+1);
+       } 
+
+       List<Integer> result= new LinkedList<>();
+
+       for(int n2 : nums2){
+        if(map.containsKey(n2) && map.get(n2)>0 ){
+            map.put(n2, map.get(n2)-1);
+            result.add(n2);
+        }
+       }
+
+       return result.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
