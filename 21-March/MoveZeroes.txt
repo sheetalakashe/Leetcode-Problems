@@ -1,0 +1,23 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int first=0;
+        int last = 1;
+
+        while(first<last && last<nums.length){
+           if(nums[first] == 0){
+            if(nums[last]!=0){
+                nums[first] = nums[last];
+                nums[last]=0;
+                first++;
+                last++;
+            }else{
+                
+                last++;
+            }
+           }else{
+            first++;
+            last++;
+           }
+        }
+    }
+}
